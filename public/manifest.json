@@ -1,0 +1,21 @@
+{
+  "short_name": "CA Study OS",
+  "name": "CA Study OS — Personal Command Center",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "display": "standalone",
+  "orientation": "any"
+}
