@@ -28,3 +28,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# logs
+*.log

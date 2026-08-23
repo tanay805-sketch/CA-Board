@@ -168,7 +168,6 @@ export function loadState(): AppState {
     
     // Validate schema basic structure
     if (!parsed || typeof parsed !== 'object' || !parsed.subjects || !parsed.studySessions) {
-      console.warn('Invalid storage format, restoring default state.');
       const fallback = getInitialState();
       saveState(fallback);
       return fallback;
@@ -182,8 +181,7 @@ export function loadState(): AppState {
       studySessions: Array.isArray(parsed.studySessions) ? parsed.studySessions : [],
       tasks: Array.isArray(parsed.tasks) ? parsed.tasks : [],
     };
-  } catch (err) {
-    console.error('Failed to load state from localStorage:', err);
+  } catch {
     const fallback = getInitialState();
     saveState(fallback);
     return fallback;
@@ -195,8 +193,7 @@ export function saveState(state: AppState): boolean {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     return true;
-  } catch (err) {
-    console.error('Failed to save state to localStorage:', err);
+  } catch {
     return false;
   }
 }

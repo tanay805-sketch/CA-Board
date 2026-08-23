@@ -3,13 +3,13 @@
   "name": "CA Study OS — Personal Command Center",
   "icons": [
     {
-      "src": "/icon.png",
-      "type": "image/png",
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
-      "src": "/icon.png",
-      "type": "image/png",
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
