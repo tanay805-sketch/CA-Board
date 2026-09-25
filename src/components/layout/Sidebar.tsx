@@ -10,6 +10,7 @@ import {
   BookOpen,
   Clock,
   CheckSquare,
+  ClipboardCheck,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -33,6 +34,7 @@ export function Sidebar() {
     { name: 'Subjects', href: '/subjects', icon: BookOpen, shortcut: 'S' },
     { name: 'Study Log', href: '/study-log', icon: Clock, shortcut: 'N' },
     { name: 'Tasks', href: '/tasks', icon: CheckSquare, shortcut: 'T' },
+    { name: 'Tracker', href: '/tracker', icon: ClipboardCheck, shortcut: 'G' },
   ];
 
   return (

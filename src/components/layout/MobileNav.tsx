@@ -3,16 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, BookOpen, Clock, CheckSquare, Settings } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Clock, CheckSquare, ClipboardCheck, Settings } from 'lucide-react';
 
 export function MobileNav() {
   const pathname = usePathname();
 
   const items = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+    { name: 'Home', href: '/', icon: LayoutDashboard },
     { name: 'Subjects', href: '/subjects', icon: BookOpen },
     { name: 'Log', href: '/study-log', icon: Clock },
     { name: 'Tasks', href: '/tasks', icon: CheckSquare },
+    { name: 'Tracker', href: '/tracker', icon: ClipboardCheck },
     { name: 'Settings', href: '/settings', icon: Settings },
   ];
 
