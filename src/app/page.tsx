@@ -10,7 +10,7 @@ import { WeeklyStudyChart } from '@/components/dashboard/WeeklyStudyChart';
 import { StudyTimeDistribution } from '@/components/dashboard/StudyTimeDistribution';
 import { ActivityHeatmap } from '@/components/dashboard/ActivityHeatmap';
 import { OnboardingWizard } from '@/components/onboarding/OnboardingWizard';
-import { CheckSquare } from 'lucide-react';
+import { CheckSquare, ClipboardCheck, ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DashboardPage() {
@@ -35,6 +35,39 @@ export default function DashboardPage() {
     <div className="space-y-6 pb-12">
       {/* Hero Card */}
       <HeroProgressCard />
+
+      {/* Group 1 Syllabus & Chapter Tracker Featured Banner */}
+      <Link
+        href="/tracker"
+        className="block p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 text-white shadow-xl shadow-blue-500/15 hover:shadow-2xl hover:scale-[1.01] transition-all group border border-white/20"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white flex-shrink-0">
+              <ClipboardCheck className="w-7 h-7" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-md bg-white/25 text-white font-extrabold text-[10px] uppercase tracking-wider">
+                  New Feature
+                </span>
+                <span className="text-xs font-semibold text-blue-100">4 Papers · 53 Topics</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white mt-0.5">
+                Group 1 Chapter & Revision Tracker
+              </h3>
+              <p className="text-xs sm:text-sm text-blue-100 font-medium">
+                Track Studied, Study Material (SM Qs), Past Exam Questions (PYQs), and Revision progress across all Group 1 subjects.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white text-blue-700 font-bold text-sm shadow-md flex-shrink-0 group-hover:bg-blue-50 transition-colors self-start sm:self-auto">
+            <span>Open Tracker</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </div>
+        </div>
+      </Link>
 
       {/* Daily & Weekly Targets */}
       <TargetsOverview />

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '@/lib/context';
 import { Modal } from '@/components/ui/Modal';
-import { Search, BookOpen, Clock, CheckSquare, ArrowRight } from 'lucide-react';
+import { Search, BookOpen, Clock, CheckSquare, ArrowRight, ClipboardCheck } from 'lucide-react';
 import Link from 'next/link';
 import { formatMinutesToHours, formatFriendlyDate } from '@/lib/dates';
 
@@ -22,6 +22,8 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
 
   const q = query.trim().toLowerCase();
 
+  const matchTracker = q && ('group 1 tracker'.includes(q) || 'chapter tracker'.includes(q) || 'syllabus'.includes(q) || 'tracker'.includes(q) || 'paper'.includes(q));
+
   const matchingSubjects = q
     ? state.subjects.filter((s) => s.name.toLowerCase().includes(q))
     : [];
@@ -36,7 +38,7 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
     ? state.tasks.filter((t) => t.title.toLowerCase().includes(q))
     : [];
 
-  const hasResults = matchingSubjects.length > 0 || matchingSessions.length > 0 || matchingTasks.length > 0;
+  const hasResults = Boolean(matchTracker) || matchingSubjects.length > 0 || matchingSessions.length > 0 || matchingTasks.length > 0;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Global Search" maxWidth="xl">
@@ -65,6 +67,33 @@ export function GlobalSearchModal({ isOpen, onClose }: GlobalSearchModalProps) {
           </div>
         ) : (
           <div className="max-h-[60vh] overflow-y-auto space-y-4 pr-1">
+            {/* Group 1 Tracker Link */}
+            {matchTracker && (
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Features</h3>
+                <Link
+                  href="/tracker"
+                  onClick={onClose}
+                  className="flex items-center justify-between p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200/60 dark:border-blue-800/60 transition-colors group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+                      <ClipboardCheck className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                        Group 1 Chapter & Revision Tracker
+                      </div>
+                      <div className="text-xs text-slate-500">
+                        Track 4 Papers, 53 Topics across Studied, SM Qs, PYQs, Revised
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            )}
+
             {/* Subjects */}
             {matchingSubjects.length > 0 && (
               <div>
