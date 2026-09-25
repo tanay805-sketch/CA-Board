@@ -16,6 +16,8 @@ interface TrackerSubject {
   topics: string[];
 }
 
+const COMMON_COLUMNS = ['Studied', 'SM Qs', 'PYQs', 'Revised'];
+
 const TRACKER_SUBJECTS: TrackerSubject[] = [
   {
     id: 'adv_acc',
@@ -24,7 +26,7 @@ const TRACKER_SUBJECTS: TrackerSubject[] = [
     marks: '100 Marks',
     focusLine: 'Focus: AS + High-Yield Problems',
     color: '#3B82F6',
-    columns: ['SM Qs', 'PYQ / RTP', 'Rev 1'],
+    columns: COMMON_COLUMNS,
     topics: [
       '01. Framework & AS 1, 2, 3',
       '02. AS 4, 5, 10 (PPE)',
@@ -48,7 +50,7 @@ const TRACKER_SUBJECTS: TrackerSubject[] = [
     marks: '100 Marks',
     focusLine: 'Focus: Section Nos. + Key Drafting',
     color: '#8B5CF6',
-    columns: ['MCQ Bk', 'Concept Writing', 'Rev 1'],
+    columns: COMMON_COLUMNS,
     topics: [
       '01. Preliminary (Sec 1-2)',
       '02. Incorporation & Matters (Sec 3-22)',
@@ -73,7 +75,7 @@ const TRACKER_SUBJECTS: TrackerSubject[] = [
     marks: '50 Marks',
     focusLine: 'Focus: Total Income Concept',
     color: '#EC4899',
-    columns: ['Provisions', 'SM Qs', 'Rev 1'],
+    columns: COMMON_COLUMNS,
     topics: [
       '01. Basic Concepts & Rates of Tax',
       '02. Residential Status & Scope',
@@ -98,7 +100,7 @@ const TRACKER_SUBJECTS: TrackerSubject[] = [
     marks: '50 Marks',
     focusLine: 'Focus: ITC Rules + Time/Value',
     color: '#06B6D4',
-    columns: ['Provisions', 'SM Qs', 'Rev 1'],
+    columns: COMMON_COLUMNS,
     topics: [
       '01. GST in India: An Introduction',
       '02. Supply under GST (Sec 7-8)',
@@ -450,9 +452,7 @@ export default function TrackerPage() {
           return (
             <div
               key={subject.id}
-              className={`transition-all duration-200 ${
-                isVisible ? 'block animate-in fade-in slide-in-from-bottom-2 duration-200' : 'hidden'
-              }`}
+              className={isVisible ? 'block transition-opacity duration-200' : 'hidden'}
             >
               <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-subtle overflow-hidden">
                 {/* Subject Detail Header */}
@@ -545,13 +545,13 @@ export default function TrackerPage() {
                   <table className="w-full min-w-[500px]">
                     <thead>
                       <tr className="bg-slate-50/80 dark:bg-slate-800/40">
-                        <th className="text-left px-4 sm:px-5 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[55%]">
+                        <th className="text-left px-4 sm:px-5 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[48%]">
                           {TOPIC_COL_LABELS[subject.id]}
                         </th>
                         {subject.columns.map((col) => (
                           <th
                             key={col}
-                            className="text-center px-3 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[15%]"
+                            className="text-center px-3 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[13%]"
                           >
                             {col}
                           </th>
